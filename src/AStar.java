@@ -20,11 +20,31 @@ public class AStar {
 
         for(int i= 0; i < node.neighbors.size(); i++){
             Node.Edge edge = node.neighbors.get(i);
-            Node m = edge.node;
+            Node neighbor = edge.node;
             double totalCost = node.g + edge.cost;
             
-            //stpoped at line 7 of peseudocode
-        
+            if(!toEvaluate.contains(neighbor) && !visitedNodes.contains(neighbor)){
+                neighbor.parent= node;
+                neighbor.g= totalCost;
+                neighbor.f= neighbor.g + neighbor.getHeuristic();
+                toEvaluate.add(neighbor);
+            }else { //the neighbor node has been visited before 
+
+                if(totalCost < neighbor.g){ //if ne
+                    neighbor.parent= node;
+                    neighbor.g= totalCost;
+                    neighbor.f= neighbor.g + neighbor.getHeuristic();
+
+                    if(visitedNodes.contains(neighbor)){
+                        visitedNodes.remove(neighbor);
+                        toEvaluate.add(neighbor);
+                    }
+
+                }
+            }
+            toEvaluate.remove(node);
+            visitedNodes.add(node);
+
         }
 
 
