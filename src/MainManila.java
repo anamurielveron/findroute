@@ -44,7 +44,7 @@ public class MainManila {
     Node TA = new Node("Tayuman", 2300);
     DJ.addBranch(1600, TA);
     Node LTO = new Node("LTO Tayuman", 1980);
-    AL.addBranch(400, LTO);
+    AM.addBranch(400, LTO);
     LTO.addBranch(210,TA);
     Node AS = new Node("Abad Santos", 0);
     TE.addBranch(1300, AS);
