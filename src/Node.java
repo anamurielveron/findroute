@@ -1,6 +1,6 @@
 //DRAFT FOR NODE CLASS (not final!!!)
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Node implements Comparable<Node> {
     public String name;
