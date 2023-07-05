@@ -1,6 +1,4 @@
-//DRAFT FOR NODE CLASS (not final!!!)
-
-import java.util.ArrayList;
+import java.util.*;
 
 public class Node implements Comparable<Node> {
     public String name;
@@ -10,7 +8,7 @@ public class Node implements Comparable<Node> {
 
     public Node parent = null;
 
-    public List<Edge> neighbors; //??
+    public List<Edge> neighbors; 
 
     public double f = Double.MAX_VALUE; //g + h (total cost)
     public double g = Double.MAX_VALUE; //cost from start to this node
