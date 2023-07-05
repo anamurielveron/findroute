@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
+
 public class GraphDisplay extends JPanel {
 
     private ArrayList<Node> nodes;
@@ -99,32 +100,40 @@ public class GraphDisplay extends JPanel {
     }
 }
 
+
+
 class SearchStatementsPanel extends JPanel {
 
     private ArrayList<String> searchStatements;
 
     public SearchStatementsPanel(ArrayList<String> searchStatements) {
+        initializeText(searchStatements);
+    }
+
+    
+    private void initializeText(ArrayList<String> searchStatements) {
         this.searchStatements = searchStatements;
+        this.setLayout(new BorderLayout());
         setPreferredSize(new Dimension(200, 600));
-    }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        int lineHeight = g.getFontMetrics().getHeight();
-        int y = lineHeight;
-
+        JTextArea textArea = new JTextArea(searchStatements.size(), 40);
+        
+        String text = "";
+        
         for (String statement : searchStatements) {
-            g.drawString(statement, 5, y);
-            y += lineHeight;
+            text += statement + "\n";
         }
-    }
 
-    @Override
-    public Dimension getPreferredSize() {
-        int lineHeight = getFontMetrics(getFont()).getHeight();
-        int height = lineHeight * searchStatements.size();
-        return new Dimension(200, height);
+        textArea.setText(text);
+        textArea.setFont(new Font("Arial", Font.PLAIN , 14));
+
+        // Wrap the lines of the JTextArea if it does not fit in the
+        // current allocated with of the JTextArea.
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        textArea.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(textArea);
+
+        this.add(scrollPane, BorderLayout.CENTER);
     }
 }
