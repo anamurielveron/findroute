@@ -8,7 +8,7 @@ public class AStar {
     public static String printQueue (PriorityQueue<Node> pq){
         String temp= "";
         for(Node n : pq)
-            temp= temp.concat(n.name + " ");
+            temp= temp.concat("\n- " + n.name);
         return temp;
     }
 
@@ -24,10 +24,10 @@ public class AStar {
 
     while (!toEvaluate.isEmpty()) {
         node = toEvaluate.poll();//node is set to the head of the queue
-        searchStatements.add(node.name + "  is now being evaluated.");
+        searchStatements.add(node.name + " is now being evaluated.");
 
         if (node == goal) {
-            searchStatements.add(node.name + "  is the goal node. Search complete.");
+            searchStatements.add(node.name + " is the goal node.\nSearch complete.\n");
             break; // Found the goal node, exit the loop
         }
 
@@ -69,7 +69,8 @@ public class AStar {
         }
         
         visitedNodes.add(node);
-        searchStatements.add("Visited nodes:"+ printQueue(visitedNodes));
+        searchStatements.add("Visited nodes: "+ printQueue(visitedNodes));
+        searchStatements.add("\n");
     }
 
     // Reconstruct the path if the goal node was found
