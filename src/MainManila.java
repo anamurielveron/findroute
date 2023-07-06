@@ -7,6 +7,7 @@ public class MainManila {
     private static final int FRAME_HEIGHT = 600;
 
     public static void main(String[] args) {
+        // Create nodes with the necessary information and connecting edges
         Node SH = new Node("Sherwood", 5570);
         SH.g = 0;
         Node PG = new Node("Pedro Gil", 4870);
@@ -55,7 +56,7 @@ public class MainManila {
         TE.addBranch(1300, AS);
         TA.addBranch(2300, AS);
 
-
+        // Add nodes to an arraylist
         ArrayList<Node> nodes = new ArrayList<>();
         nodes.add(SH);
         nodes.add(PG);
