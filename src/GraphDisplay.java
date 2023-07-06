@@ -96,7 +96,7 @@ public class GraphDisplay extends JPanel {
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(800, 600); // Set the preferred size of the component
+        return new Dimension(1000, 600); // Set the preferred size of the component
     }
 }
 
@@ -116,7 +116,7 @@ class SearchStatementsPanel extends JPanel {
         this.setLayout(new BorderLayout());
         setPreferredSize(new Dimension(200, 600));
 
-        JTextArea textArea = new JTextArea(searchStatements.size(), 40);
+        JTextArea textArea = new JTextArea(searchStatements.size(), 20);
         
         String text = "";
         

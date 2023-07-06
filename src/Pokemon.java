@@ -6,7 +6,11 @@ public class Pokemon {
     private static final int FRAME_WIDTH = 800;
     private static final int FRAME_HEIGHT = 600;
 
-    public static void main(String[] args) {
+    Pokemon(){
+
+    }
+
+    public void run() {
         // Create nodes with the necessary information and connecting edges
         Node A = new Node("Mesagoza", 3087);
         A.g=0;
@@ -93,21 +97,22 @@ public class Pokemon {
         ArrayList<String> searchStatements = AStar.searchStatements;
 
         SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Graph Display");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            JFrame frame = new JFrame("Paldea Region (Pokemon Violet/Scarlet)");
             frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+            frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
             GraphDisplay graphDisplay = new GraphDisplay(nodes, path);
 
             JScrollPane graphScrollPane = new JScrollPane(graphDisplay);
             graphScrollPane.setPreferredSize(new Dimension(800, 600));
 
+            //Split pannel for search statements
             SearchStatementsPanel searchStatementsPanel = new SearchStatementsPanel(searchStatements);
             JScrollPane searchStatementsScrollPane = new JScrollPane(searchStatementsPanel);
             searchStatementsScrollPane.setPreferredSize(new Dimension(200, 600));
 
             JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, graphScrollPane, searchStatementsScrollPane);
-            splitPane.setDividerLocation(800);
+            splitPane.setDividerLocation(1200);
             frame.getContentPane().add(splitPane);
 
             frame.setVisible(true);
