@@ -48,12 +48,13 @@ public class AStar {
 
             } else { // The neighbor node has been visited before
                 if (totalCost < neighbor.g) {
+                    searchStatements.add("Evaluating... ");
+                    searchStatements.add("Edge costs: "+ totalCost + "< Edge cost: " + neighbor.g);
+                    
                     neighbor.parent= node;
                     neighbor.g = totalCost;
                     neighbor.f = neighbor.g + neighbor.getHeuristic();
 
-                    searchStatements.add("Evaluating... ");
-                    searchStatements.add("Edge costs: "+ totalCost + "< Edge cost: " + neighbor.g);
                     searchStatements.add(node.name+" to "+ neighbor.name);
                     searchStatements.add("Edge costs: "+totalCost);
                     searchStatements.add("Heuristic cost: "+ neighbor.getHeuristic() +" + edge cost: " + neighbor.g+ "= "+ neighbor.f);
